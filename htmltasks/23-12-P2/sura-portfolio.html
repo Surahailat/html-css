@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> sura/portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+            font-family: "Roboto Slab", serif;
+        }
+
+        .navbar {
+            background-color: white;
+            height: 80px;
+            margin: 20px;
+            border-radius: 16px;
+            padding: 0.5rem;
+        }
+
+        .navbar-toggler {
+            border: none;
+            font-size: 1.25rem;
+        }
+
+        .navbar-toggler:focus .btn-close:focus {
+            box-shadow: none;
+            outline: none;
+
+        }
+
+        .nav-link {
+            color: #3e1e33;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #3e1e33;
+        }
+
+        .far1 {
+            width: 50%;
+            height: 50%;
+            position: relative;
+            z-index: 1;
+            right: -57%;
+            top: -37px;
+        }
+
+        .far2 {
+            width: 25%;
+            height: 45%;
+            position: absolute;
+            z-index: 1;
+            top: 269px;
+            right: 92px;
+        }
+
+        .far3 {
+            width: 39%;
+            height: 60%;
+            position: absolute;
+            z-index: 1;
+            top: 313px;
+            right: 41px;
+        }
+
+        .shm {
+            height: 245px;
+            width: 330px;
+            position: absolute;
+            padding-top: 32px;
+            top: 23px;
+            left: 237px;
+        }
+
+        @media(max-width:991px) {
+
+
+            .far1 {
+                left: -353px;
+            }
+
+            .shm {
+                left: 0px;
+                width: 139px;
+                display: none;
+            }
+
+            .nav-link::before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 51%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 1px;
+                background-color: #3e1e33;
+                visibility: hidden;
+                transition: 0.1s ease-in-out;
+            }
+
+            .nav-link:hover::before,
+            .nav-link.active::before {
+                width: 83%;
+                visibility: visible;
+            }
+
+            .far1::before {
+                width: 300px;
+                height: 300px;
+
+                left: -173px;
+
+            }
+        }
+
+        .hero-section {
+            background: url(protfolio/742bbd9d5c296dd2d6e85c1d2dff52d1.jpg) no-repeat center;
+            background-size: cover;
+            width: 100%;
+            height: 110vh;
+
+
+        }
+
+        .hero-section::before {
+            background-color: hsl(0, 0, 0, 0.6);
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+
+        }
+
+        .hero-section .container {
+            height: 100vh;
+            z-index: 1;
+            position: relative;
+        }
+
+        .Download {
+            width: 80%;
+            font-size: 50%;
+            background-color: #3e1e33;
+
+            transition: all 2s;
+        }
+
+        .Download:hover {
+            transform: scale(1.1);
+        }
+
+        .container {
+            display: flex;
+
+        }
+
+        .about {
+            padding: 50px;
+
+
+        }
+
+        .Soft {
+            transition: all 2s;
+        }
+
+        .Soft:hover {
+            transform: scale(1.5);
+        }
+
+        .proj {
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding-bottom: 4%;
+            padding-top: 2%;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            position: relative;
+        }
+
+        .card-image {
+            height: 187px;
+            background-size: cover;
+            background-position: center;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+
+        /* .card-icon {
+            position: absolute;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #e63946;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-icon img {
+            width: 40px;
+            height: 40px;
+        } */
+
+        .card-content {
+            padding: 50px 20px 20px;
+        }
+
+        .card-content h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #1d3557;
+        }
+
+        .card-content ul {
+            list-style: none;
+        }
+
+        .card-content li {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .abu {
+            color: #3e1e33;
+        }
+
+        .fot {
+            width: 25%;
+            position: absolute;
+            z-index: 1;
+            right: 38%;
+            top: 28%;
+
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 90%;
+            }
+
+            .abu {
+                flex-direction: column;
+            }
+
+            .fot {
+                display: none;
+            }
+
+        }
+
+        .con {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .contact-us-container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .contact-us-container h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .info-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .info-item {
+            flex: 1 1 calc(25% - 20px);
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .info-item span {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .info-item h3 {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .info-item p {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .form-row input {
+            flex: 1;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: antiquewhite;
+            background-color: #3e1e33;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3e1e3389;
+        }
+
+        .soft {
+            text-align: center;
+            color: #3e1e33;
+            font-size: 300%;
+            font-weight: bold;
+            padding-top: 2%;
+        }
+
+        .po {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            padding-top: 4%;
+            column-gap: 100px;
+        }
+
+        .lin {
+            position: absolute;
+            z-index: 1;
+            width: 1510px;
+            height: 735px;
+            right: 18px;
+            bottom: -225px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .info-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .info-item {
+                flex: 1 1 100%;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+
+            .soft {
+                flex-wrap: wrap;
+            }
+
+            .po {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .lin {
+                width: 400px;
+                display: none;
+            }
+
+            .bott {
+                flex-wrap: wrap;
+            }
+
+            .fot {
+                top: 49%;
+            }
+
+            .about {
+                flex-direction: column;
+                padding: 0%;
+            }
+
+
+        }
+
+        .web:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .map {
+            padding-top: 20%;
+            ;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            width: 80%;
+            right: -10%;
+
+        }
+
+        .map iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <navbar>
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container">
+
+                <img src="protfolio/Picsart_24-12-20_21-29-43-183.png" alt="" style="height: 80px; width: 80px;"
+                    class="navbar-brand me-auto">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Logo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active max-lg-2" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link max-lg-2" href="#">About me</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link max-lg-2"
+                                    href="https://drive.google.com/file/d/18_n15-t9XVfVBS7ntvQdbYgFB9e7J4gu/view?usp=drivesdk">Resume</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link max-lg-2" href="#">Contact</a>
+                            </li>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </navbar>
+    <section class="hero-section">
+        <div class="container d-flex align-items-center justify-content-between fs-1 ">
+            <div style="padding-top: 10%;">
+
+                <h1 style="color: #3e1e33; font-size: 118%;">Sura H Hailat</h1>
+                <p style="color: #3e1e33;font-size:62%;">Full Stack Developer</p>
+                <button class="Download" style="border-radius: 20px; color: antiquewhite;">
+                    <img src="protfolio/download_1-1024.webp" alt="download_1-1024"
+                        style="width: 9%; height: 82%; padding-bottom: 4px;">
+                    <a>Download Resume</a>
+                </button>
+            </div>
+
+            <div>
+                <div><img src="protfolio/Picsart_24-12-21_00-31-04-392.png" alt="p1" class="far1">
+                </div>
+                <div><img src="protfolio/0694ceea-66d5-4409-8181-05cbb9656384.jpg" alt="p2" class="far2"></div>
+                <div><img src="protfolio/Picsart_24-12-21_00-30-17-959.png" alt="p3" class="far3"></div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="about" style="display: flex;column-gap: 230px; padding: 7% 14% 7% 14%;">
+            <div style="position: relative;padding-top: 65px;">
+                <img src="protfolio/a3fa0511-67fb-4d07-b612-2b7f81a3fb88.jpg" alt="grad"
+                    style="height: 270px;width: 200px; border-radius: 80px;">
+                <img src="protfolio/Picsart_24-12-21_15-26-31-044.png" alt=""
+                    style="height: 245px; width: 330px;position: absolute; padding-top: 32px;top: 23px;left:237px;"
+                    class="shm">
+                <div class="bott" style="Z-INDEX: 1;top: 340px;right: 240px;display: flex;padding-top: 33px;">
+                    <button
+                        style="height: 100PX;width: 100PX;background-color: #3e1e33; color: antiquewhite;border-radius: 50PX;">UI,UX</button>
+                    <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <button
+                        style="height: 100PX;width: 100PX;background-color: #3e1e33; color: antiquewhite;border-radius: 50PX;">HTML</button>
+                    <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <button class="css"
+                        style="height: 100PX;width: 100PX;background-color: #3e1e33; color: antiquewhite;border-radius: 50PX;">CSS</button>
+
+                </div>
+            </div>
+            <div class="abu">
+                <h2 style="font-size: 50px; color:#3e1e33;">About me</h2>
+                <p style="color:#3e1e33;">&nbsp;&nbsp;&nbsp;I’m a <b>Full Stack Developer Trainee </b> at<b> Orange
+                        Coding Academy</b> with a passion for
+                    crafting dynamic and user-friendly web
+                    applications.<br>
+
+                    &nbsp;&nbsp;&nbsp;I graduated from the<b> Jordan University of Science and Technology (JUST)
+                    </b>with a Bachelor’s degree, and I’ve
+                    recently shifted my focus entirely to the world of web development. My journey started with a love
+                    for problem-solving and creativity, which naturally led me to coding and designing websites.<br>
+
+                    &nbsp;&nbsp;&nbsp;Now, I specialize in building responsive, efficient, and visually appealing
+                    websites and
+                    applications. I’m constantly learning and staying up-to-date with the latest technologies to bring
+                    innovative ideas to life.<br>
+
+                    &nbsp;&nbsp;&nbsp;In my free time, I enjoy exploring new tools, collaborating with like-minded
+                    professionals, and
+                    working on personal projects that challenge my skills.</p>
+                <br>
+            </div>
+        </div>
+    </section>
+    <section style="position: relative;">
+        <img src="protfolio/Picsart_24-12-21_15-21-00-429.png" alt=""
+            style="position: absolute; z-index: 1;width: 1510px; height: 735px; right: 18px; bottom: -225px;"
+            class="lin">
+        <br>
+        <br>
+        <br>
+
+    </section>
+    <!-- <section>
+        <div class="row" style="justify-content: center;padding-top: 50px;padding-bottom: 50px;">
+            <div class="col-sm-6 mb-3 mb-sm-0" style="width: 30%;">
+                <div class="card" style="background-color:antiquewhite ; color:#3e1e33;">
+                    <div class="card-body">
+                        <h2 class="card-title">Education</h2>
+                        <p class="card-text"><small class="text-muted">2018-2022</small></p>
+                        <p class="card-text">Bachelor’s Degree in <b>Applied Chemistry</b></p>
+                        <p> at Jordan University of Science and Technology
+                        <p style="padding-bottom: 8px">(JUST)</p>
+                        </p>
+                        <p class="card-text"><small class="text-muted"><b>GPA:</b> 3.27/4.0 Very Good</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6" style="width: 30%;">
+                <div class="card" style="background-color:antiquewhite ; color:#3e1e33;">
+                    <div class="card-body">
+                        <h2 class="card-title">Experience</h2>
+                        <p class="card-text"><small class="text-muted">12/2024-present</small></p>
+                        <p class="card-text"><b>Full Stack Developer</b>
+                            Trainee at Orange Coding Academy </p>
+                        <p class="card-text"><small class="text-muted">2/2022-6/2022</small></p>
+                        <p class="card-text"><b>LAB TECHNICIAN</b>Trainee King Abdullah University Hospital</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    <section>
+        <p style="text-align: center;
+        color:#3e1e33;
+        font-size: 300%;
+        font-weight: bold;">Education</p>
+    </section>
+    <section style="position: relative; padding-top: 3%;padding-bottom: 8%;">
+        <section style="padding-left: 6%;">
+            <div class="card" style="width: 34%; background-color:#3e1e33; color:antiquewhite;">
+                <h5 class="card-header"><b>Bachelor’s Degree</b></h5>
+                <div class="card-body">
+                    <h5 class="card-title">Bachelor’s Degree in Applied Chemistry at Jordan University of Science and
+                        Technology(JUST)</h5>
+                    <p class="card-text"><small class="text" style="color: rgba(250, 235, 215, 0.616);"><b>GPA:</b>
+                            3.27/4.0 Very Good</small></p>
+                    <p class="card-text"><small class="text"
+                            style="color: rgba(250, 235, 215, 0.616);">2018-2022</small></p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <img src="protfolio/Picsart_24-12-22_21-09-43-263.png" alt=""
+                style="width: 25%; position: absolute; z-index: 1; right: 38%; top: 28%;" class="fot">
+        </section>
+        <section style="padding-right: 6%; direction: rtl; text-align: left;">
+            <div class="card bs-card-border-color:antiquewhite"
+                style="width: 34%; background-color:#3e1e33; color:antiquewhite">
+                <h5 class="card-header"><b>High School Diploma</b></h5>
+                <div class="card-body">
+                    <h5 class="card-title">Scientific Stream</h5>
+                    <h5 class="card-title">Harema Secondary School for Girls</h5>
+                    <p class="card-text"><small class="text" style="color: rgba(250, 235, 215, 0.616);"><b>Average:</b>
+                            78.1 </small></p>
+                    <p class="card-text"><small class="text"
+                            style="color: rgba(250, 235, 215, 0.616);">2017-2018</small></p>
+                </div>
+            </div>
+        </section>
+    </section>
+    <section>
+        <div>
+            <p style="text-align: center; color: #3e1e33; font-size: 300%; font-weight: bold;">Projects</p>
+        </div>
+    </section>
+    <section class="proj" style="background-color: rgba(250, 235, 215, 0.83);">
+
+        <div class="cards-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-image" style="background-image: url(protfolio/Screenshot\ 2024-12-22\ 220138.png);">
+                </div>
+                <!-- <div class="card-icon">
+            <img src="icon1.png" alt="Get Involved Icon">
+          </div> -->
+                <div class="card-content">
+                    <h3>YBook</h3>
+                    <div>
+                        <p>A Library Store designed using Figma, featuring a user-friendly interface for browsing,
+                            purchasing, and managing books. The design emphasizes simplicity, functionality, and an
+                            organized layout to enhance the user experience.</p>
+                        <p class="card-text"><a
+                                href="https://www.figma.com/design/6OqsvOO7OSmVKxq1qWR2w7/orange-library?node-id=0-1&t=gfIMMnWdjcMDCKmJ-1"
+                                style="text-decoration: none;"><small class="text"
+                                    style="color: rgba(0, 0, 0, 0.616);">click on</small></a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-image"
+                    style="background-image: url(protfolio/aa0033fc-6142-4d37-9b8e-02379a02f978.jpg);">
+                </div>
+                <!-- <div class="card-icon">
+            <img src="icon2.png" alt="Kids Education Icon">
+          </div> -->
+                <div class="card-content">
+                    <h3 style="font-family: " Almarai", serif;">رخصة زواج</h3>
+                    <div>
+                        <p>A campaign to reduce the divorce rate in Jordan under the Crown Prince Foundation (Ana
+                            Usharek+).</p>
+                        <p class="card-text"><a href="#" style="text-decoration: none;"><small class="text"
+                                    style="color: rgba(0, 0, 0, 0.616);">click on</small></a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-image" style="background-image: url(protfolio/Screenshot\ 2024-12-23\ 090852.png);">
+                </div>
+                <!-- <div class="card-icon">
+            <img src="icon3.png" alt="Help Volunteer Icon">
+          </div> -->
+                <div class="card-content">
+                    <h3>Portfolio</h3>
+                    <div>
+                        <p>A professional portfolio designed to showcase my skills, projects, and expertise. It
+                            highlights my creative abilities, attention to detail, and proficiency in design and
+                            development tools.</p>
+                        <p class="card-text"><a
+                                href="https://www.figma.com/design/6OqsvOO7OSmVKxq1qWR2w7/orange-library?node-id=0-1&t=gfIMMnWdjcMDCKmJ-1"
+                                style="text-decoration: none;"><small class="text"
+                                    style="color: rgba(0, 0, 0, 0.616);">click on</small></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div>
+            <h2 style="text-align: center; color: #3e1e33; font-size: 300%; font-weight: bold; padding-top: 2%;">Soft
+                Skills</h2>
+            <div style="display: flex ;justify-content: center;  column-gap: 60px;padding: 51px;" class="soft">
+                <button
+                    style="height: 150PX;width: 150PX;background-color: #3e1e33; color: antiquewhite;border-radius: 75PX;"
+                    class="Soft">Team
+                    work</button>
+                <button
+                    style="height: 150PX;width: 150PX;background-color: #3e1e33; color: antiquewhite;border-radius: 75PX;"
+                    class="Soft">Communication</button>
+                <button
+                    style="height: 150PX;width: 150PX;background-color: #3e1e33; color: antiquewhite;border-radius: 75PX;"
+                    class="Soft">Creativity</button>
+                <button
+                    style="height: 150PX;width: 150PX;background-color: #3e1e33; color: antiquewhite;border-radius: 75PX;"
+                    class="Soft">Problem-solving</button>
+                <button
+                    style="height: 150PX;width: 150PX;background-color: #3e1e33; color: antiquewhite;border-radius: 75PX;"
+                    class="Soft">Time
+                    management</button>
+            </div>
+        </div>
+        <div>
+            <h2 style="text-align: center; color: #3e1e33;font-size: 300%; font-weight: bold;">Technical Skills</h2>
+            <div style="display: flex ;justify-content: center;  column-gap: 60px;padding: 51px;" class="soft">
+                <button
+                    style="height: 150PX;width: 150PX;background-color: #3e1e33; color: antiquewhite;border-radius: 75PX;"
+                    class="Soft">UI,UX</button>
+                <button
+                    style="height: 150PX;width: 150PX;background-color: #3e1e33; color: antiquewhite;border-radius: 75PX;"
+                    class="Soft">HTML</button>
+                <button
+                    style="height: 150PX;width: 150PX;background-color: #3e1e33; color: antiquewhite;border-radius: 75PX;"
+                    class="Soft">CSS</button>
+                <button
+                    style="height: 150PX;width: 150PX;background-color: #3e1e33; color: antiquewhite;border-radius: 75PX;"
+                    class="Soft">Visual
+                    Studio Code</button>
+                <button
+                    style="height: 150PX;width: 150PX;background-color: #3e1e33; color: antiquewhite;border-radius: 75PX;"
+                    class="Soft">GitHub</button>
+            </div>
+        </div>
+    </section>
+    <section class="con">
+        <div class="contact-us-container">
+            <h2 style="text-align: center; color: #3e1e33;font-size: 300%; font-weight: bold; padding-bottom: 5%;">
+                Contact Me</h2>
+
+            <form class="contact-form">
+                <div class="form-row">
+                    <input type="text" placeholder="FIRST NAME" required>
+                    <input type="text" placeholder="LAST NAME" required>
+                </div>
+                <div class="form-row">
+                    <input type="email" placeholder="EMAIL ADDRESS" required>
+                    <input type="tel" placeholder="PHONE" required>
+                </div>
+                <input type="text" placeholder="SUBJECT" required>
+                <textarea placeholder="MESSAGE" rows="5" required></textarea>
+                <button type="submit">SUBMIT</button>
+            </form>
+            <br>
+            <br>
+            <div class="info-section">
+                <div class="info-item">
+                    <span><img src="protfolio/phone.png" alt="" style="width: 15%;" class="web"></span>
+                    <h3 style="color: #3e1e33;">PHONE</h3>
+                    <p>+962 7 8258 3925</p>
+                </div>
+                <div class="info-item">
+                    <span><img src="protfolio/linkedin.png" alt="" style="width: 15%;" class="web"></span>
+                    <h3 style="color: #3e1e33;">LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/sura-hailat-ab0505249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                        style="font-size: 12px; color: #666; line-height: 1.5;">Sura Hailat</a>
+                </div>
+
+                <div class="info-item">
+                    <span><img src="protfolio/github.png" alt="" style="width: 15%; " class="web"></span>
+                    <h3 style="color: #3e1e33;">GitHub</h3>
+                    <a href="https://github.com/Surahailat" style="font-size: 12px; color: #666; line-height: 1.5;">Sura
+                        Hailat</a>
+                </div>
+                <div class="info-item">
+                    <span><img src="protfolio/mail.png" alt="" style="width: 15%;" class="web"></span>
+                    <h3 style="color: #3e1e33;">Email</h3>
+                    <p>hailatsura@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer" style="background-color: rgba(250, 235, 215, 0.83);border-radius: 20% 25% 0% 0%; ">
+        <div style="justify-content: center; text-align: center; padding-top: 4%;">
+            <img src="protfolio/Picsart_24-12-20_21-29-43-183.png" alt="" style="height: 80px; width: 80px;"
+                class="navbar-brand me-auto">
+        </div>
+        <div style="display: flex; justify-content: center; text-align: center;padding-top: 2%;column-gap: 10%;">
+            <a style="color: #3e1e33;">Home</a>
+            <a style="color: #3e1e33;">About me</a>
+            <a href="https://drive.google.com/file/d/18_n15-t9XVfVBS7ntvQdbYgFB9e7J4gu/view?usp=drivesdk"
+                style="color: #3e1e33; text-decoration:none;">Resume</a>
+            <a>Contact</a>
+        </div>
+        <div style="display: flex; justify-content: center; text-align: center;padding-top:4% ;column-gap: 100px;padding-bottom: 4%;"
+            class="po">
+            <a><img src="protfolio/phone.png" alt="" style=" width: 45px;"></a>
+            <a
+                href="https://www.linkedin.com/in/sura-hailat-ab0505249?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img
+                    src="protfolio/linkedin.png" alt="" style="    width: 45px;"></a>
+            <a href="https://github.com/Surahailat"><img src="protfolio/github.png" alt="" style="    width: 45px;"></a>
+            <a><img src="protfolio/mail.png" alt="" style="    width: 45px;"></a>
+            <a href="https://www.facebook.com/profile.php?id=100007690693253&mibextid=ZbWKwL"><img
+                    src="protfolio/facebook.png" alt="" style="    width: 45px;"></a>
+
+        </div>
+        <div class="map">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d991.0225136610084!2d35.84836994428028!3d32.552586168765096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151c7715f2c2e7ab%3A0x51755840c8ddbefd!2sOrange%20Digital%20Village%20Irbid!5e1!3m2!1sen!2sjo!4v1734906659098!5m2!1sen!2sjo"
+                width="1400px" height="400px" style="border:0;justify-content: center; align-items: center;"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <br>
+        <div style="background-color: #3e1e33; color: antiquewhite; text-align: center; font-size: small;height: 70Px;">
+            <P style="padding-top:10px ;">Terms & Condition &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Privacy Policy</P>
+            <P>&copy; 2024 hailatsura@gmail.com</P>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
